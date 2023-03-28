@@ -1,4 +1,7 @@
 package com.lab.models;
 
-public class Owner {
+public enum Owner {
+    CLIENT,
+    COMPANIES,
+    BANK
 }
