@@ -15,10 +15,12 @@ public class Database {
     BufferedWriter bufWriter = new BufferedWriter(writer);
 
     Database() throws IOException {
-        memorizeBase();
+        readFromBase();
     }
 
-    private void memorizeBase() {
+    private void readFromBase() {
 
     }
+
+    public void writeToBase() {}
 }
