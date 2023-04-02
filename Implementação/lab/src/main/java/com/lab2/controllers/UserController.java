@@ -1,5 +1,6 @@
 package com.lab2.controllers;
 
+import com.lab2.DTOs.LoginDTO;
 import com.lab2.models.User;
 import com.lab2.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,20 @@ public class UserController {
     ) {
         Optional<User> user = userService.findById(id);
         return user.orElse(null);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDTO user) {
+        User newUser = userService.findByEmail(user.getEmail());
+        if (newUser != null) {
+            if (user.matchPassword(newUser.getPassword())) {
+                return ResponseEntity.ok(true);
+            }
+            return ResponseEntity.status(401).build();
+
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping

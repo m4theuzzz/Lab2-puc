@@ -22,8 +22,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public List<User> findAllByType(String type) {
-        return userRepository.findAllByType(type);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public User updateUser(Integer id, User user) {
