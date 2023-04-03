@@ -20,13 +20,14 @@ const Cars = () => {
 
   const carModal = useModal();
 
+  const handleRentCar = async () => {};
+  const getCars = async () => {
+    axios.get();
+
+    setCars();
+  };
+
   useEffect(() => {
-    const getCars = async () => {
-      axios.get();
-
-      setCars();
-    };
-
     getCars();
   }, []);
 
@@ -39,11 +40,14 @@ const Cars = () => {
           close={carModal.close}
           title={"Fazer pedido de aluguel"}
         >
-          dwqwq
+          Tem certeza que deseja realizar um pedido para{" "}
+          {/* {carModal.elementClicked.id} ? */}
+          <Button onClick={carModal.close}>Cancelar</Button>
+          <Button onClick={handleRentCar}>Confirmar</Button>
         </Modal>
-        {carsmock.map((car) => (
+        {carsmock.map((car: any) => (
           <Grid item>
-            <BasicCard action={() => carModal.open()} />
+            <BasicCard action={() => carModal.open(car)} />
           </Grid>
         ))}
       </Grid>

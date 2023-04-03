@@ -57,6 +57,7 @@ const SignUp = () => {
           Cadastrar
         </Button>
       </Grid>
+     
     </Grid>
   );
 };
