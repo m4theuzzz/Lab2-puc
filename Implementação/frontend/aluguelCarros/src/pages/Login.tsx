@@ -1,7 +1,12 @@
 import { Button, Grid, TextField } from "@mui/material";
+import axios from "axios";
 import React from "react";
 
 const Login = () => {
+  const handleSignIn = async () => {
+    axios.post();
+  };
+
   return (
     <Grid
       container
@@ -21,7 +26,9 @@ const Login = () => {
         <TextField label="Senha" fullWidth />
       </Grid>
       <Grid item xs={12}>
-        <Button variant="contained" fullWidth>Entrar</Button>
+        <Button onClick={handleSignIn} variant="contained" fullWidth>
+          Entrar
+        </Button>
       </Grid>
     </Grid>
   );
