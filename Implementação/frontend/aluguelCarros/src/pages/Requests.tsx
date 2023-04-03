@@ -6,13 +6,26 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import BasicCard from "../components/Card";
 import NavBar from "../components/NavBar";
 
 const carsmock = [1, 2, 3, 45, 6];
 
 const Requests = () => {
+  const [requests, setRequests] = useState([]);
+
+  useEffect(() => {
+    const getRequests = async () => {
+      axios.get();
+
+      setRequests();
+    };
+
+    getRequests();
+  }, []);
+
   return (
     <Grid>
       <NavBar pageName={"Pedidos de Aluguel"} />
