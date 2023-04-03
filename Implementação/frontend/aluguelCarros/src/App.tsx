@@ -13,15 +13,13 @@ function App() {
       sx={{
         height: "100vh",
         width: "100vw",
-        backgroundColor: "blue",
+        backgroundColor: "lightblue",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Grid sx={{ width: "90%", height: "90%", backgroundColor: "white" }}>
-        <AppRoutes />
-      </Grid>
+      <AppRoutes />
     </Grid>
   );
 }

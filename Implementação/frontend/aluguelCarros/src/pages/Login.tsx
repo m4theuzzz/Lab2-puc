@@ -1,9 +1,30 @@
-import React from 'react'
+import { Button, Grid, TextField } from "@mui/material";
+import React from "react";
 
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <Grid
+      container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        width: 300,
+        margin: "auto",
+      }}
+      xs={12}
+      spacing={3}
+    >
+      <Grid item xs={12}>
+        <TextField label="Email" fullWidth />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField label="Senha" fullWidth />
+      </Grid>
+      <Grid item xs={12}>
+        <Button variant="contained" fullWidth>Entrar</Button>
+      </Grid>
+    </Grid>
+  );
+};
 
-export default Login
+export default Login;

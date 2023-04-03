@@ -2,9 +2,9 @@ services:
   LabDatabase:
     image: mysql:8
     ports:
-      - 3306:3306
+      - 4500:4500
     expose:
-      - 3306
+      - 4500
     environment:
       - MYSQL_ROOT_PASSWORD=toor
       - MYSQL_DATABASE=Lab

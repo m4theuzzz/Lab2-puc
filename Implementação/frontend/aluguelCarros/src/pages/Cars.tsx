@@ -2,12 +2,12 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import NavBar from "../components/NavBar";
 
-const Requests = () => {
+const Cars = () => {
   return (
     <div>
-      <NavBar pageName={"Pedidos de Aluguel"} />
+      <NavBar pageName={"Carros"} />
     </div>
   );
 };
 
-export default Requests;
+export default Cars;
