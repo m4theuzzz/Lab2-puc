@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const BasicCard = ({ subtitle, title, content, action }: any) => {
+const BasicCard = ({ subtitle, title, content, action, actionText }: any) => {
   return (
     <Card sx={{ width: 275 }}>
       <CardContent>
@@ -21,7 +21,7 @@ const BasicCard = ({ subtitle, title, content, action }: any) => {
       </CardContent>
       <CardActions>
         <Button onClick={action} size="small">
-          Alugar
+          {actionText}
         </Button>
       </CardActions>
     </Card>
