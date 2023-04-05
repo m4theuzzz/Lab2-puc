@@ -7,6 +7,7 @@ const defaultValues = {
   name: "",
   email: "",
   password: "",
+  type: "customer"
 };
 const SignUp = () => {
   const { values, handleChange } = useForm(defaultValues, {});

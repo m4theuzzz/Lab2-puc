@@ -3,6 +3,7 @@ package com.lab2.controllers;
 import com.lab2.DTOs.LoginDTO;
 import com.lab2.models.User;
 import com.lab2.services.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,7 @@ public class UserController {
         }
     }
 
+    @Transactional
     @PostMapping
     public ResponseEntity<User> postUser(@RequestBody User users) {
         User newUser = userService.saveUser(users);
@@ -61,6 +63,7 @@ public class UserController {
         return ResponseEntity.created(UriComponentsBuilder.fromPath("/users").buildAndExpand(newUser.getId()).toUri()).build();
     }
 
+    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         userService.delete(id);
