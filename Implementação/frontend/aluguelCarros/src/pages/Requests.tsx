@@ -13,21 +13,33 @@ import NavBar from "../components/NavBar";
 import useModal from "../hooks/useModal";
 import Modal from "../components/Modal";
 
-const carsmock = [1, 2, 3, 45, 6];
 
 const Requests = () => {
   const [requests, setRequests] = useState([]);
 
   const rentModal = useModal();
 
-  const handleDeleteRent = async () => {};
+  const handleDeleteRent = async () => {
+    try {
+      const res = await axios.delete('http://localhost:8080/rents/' + rentModal.elementClicked?.id)
+
+      alert('Excluido com sucesso')
+      getRequests()
+    } catch {
+      alert('Erro')
+
+    }
+
+  };
+  const getRequests = async () => {
+    const rents = (await axios.get('http://localhost:8080/rents')).data;
+
+    console.log(rents)
+
+    setRequests(rents);
+  };
 
   useEffect(() => {
-    const getRequests = async () => {
-      const rents = (await axios.get('https://localhost:8080/rents')).data;
-
-      setRequests(rents);
-    };
 
     getRequests();
   }, []);
@@ -39,18 +51,19 @@ const Requests = () => {
         <Modal
           open={rentModal.isOpen}
           close={rentModal.close}
-          title={"Fazer pedido de aluguel"}
+          title={"Pedido de aluguel"}
         >
           Tem certeza que deseja apagar
-          {rentModal.elementClicked.id} ?
+
+          {rentModal.elementClicked?.id} ?
           <Button onClick={rentModal.close}>Cancelar</Button>
           <Button onClick={handleDeleteRent}>Confirmar</Button>
         </Modal>
-        {carsmock.map((rent: any) => (
+        {requests.map((rent: any) => (
           <Grid item>
             <BasicCard
               title={rent.id}
-              subtitle={rent.status}
+              subtitle={"pentendeu"}
               action={() => rentModal.open(rent)}
               actionText={"Excluir"}
             />

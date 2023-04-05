@@ -1,7 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material";
 import axios from "axios";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Router } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 
 const defaultValues = {
@@ -13,7 +13,12 @@ const Login = () => {
   const { values, handleChange } = useForm(defaultValues, {});
 
   const handleSignIn = async () => {
-    const logedIn = await axios.post('http://localhost:8080/users/login', values);
+    try {
+      const logedIn = await axios.post('http://localhost:8080/users/login', values);
+      window.location.href = "http://localhost:5173/cars";
+    } catch {
+
+    }
   };
 
   return (

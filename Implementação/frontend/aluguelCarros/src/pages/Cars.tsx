@@ -29,12 +29,20 @@ const Cars = () => {
   const handleRentCar = async () => {
     const date = new Date();
     date.setFullYear(date.getFullYear() + 1)
-    const rent = (await axios.post('http://localhost:8080/rents', {
-      requester: 1,
-      vehicleId: selectedCar?.id,
-      expireAt: date,
-      status: "pending"
-    }))
+    try {
+      const rent = await axios.post('http://localhost:8080/rents', {
+        requester: 1,
+        vehicleId: selectedCar?.id,
+        expireAt: date,
+        status: "pending"
+      })
+
+      alert('aluguel realizado com sucesso')
+      carModal.close()
+    } catch (err: any) {
+      alert('erro ' + err.response.data)
+    }
+
   };
   const getCars = async () => {
     const vehicles = (await axios.get<Vehicle[]>('http://localhost:8080/vehicles')).data;
