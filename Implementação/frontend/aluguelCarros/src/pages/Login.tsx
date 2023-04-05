@@ -13,7 +13,7 @@ const Login = () => {
   const { values, handleChange } = useForm(defaultValues, {});
 
   const handleSignIn = async () => {
-    axios.post();
+    const logedIn = await axios.post('http://localhost:8080/users/login', JSON.stringify(defaultValues));
   };
 
   return (

@@ -12,7 +12,7 @@ const SignUp = () => {
   const { values, handleChange } = useForm(defaultValues, {});
 
   const handleSignUp = async () => {
-    axios.post();
+    const userCreated = await axios.post('http://localhost:8080/users', JSON.stringify(defaultValues));
   };
 
   return (
@@ -57,7 +57,7 @@ const SignUp = () => {
           Cadastrar
         </Button>
       </Grid>
-     
+
     </Grid>
   );
 };

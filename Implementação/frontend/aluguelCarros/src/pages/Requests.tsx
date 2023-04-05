@@ -22,9 +22,9 @@ const Requests = () => {
 
   useEffect(() => {
     const getRequests = async () => {
-      axios.get();
+      const rents = (await axios.get('https://localhost:8080/rents')).data;
 
-      setRequests();
+      setRequests(rents);
     };
 
     getRequests();

@@ -15,16 +15,22 @@ import useModal from "../hooks/useModal";
 
 const carsmock = [1, 2, 3, 45, 6];
 
+export interface Vehicle {
+  brand: string;
+  model: string;
+  year: number;
+}
+
 const Cars = () => {
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState<Vehicle[]>([]);
 
   const carModal = useModal();
 
-  const handleRentCar = async () => {};
+  const handleRentCar = async () => { };
   const getCars = async () => {
-    axios.get();
+    const vehicles = (await axios.get<Vehicle[]>('http://localhost:8080/vehicles')).data;
 
-    setCars();
+    setCars(vehicles);
   };
 
   useEffect(() => {
