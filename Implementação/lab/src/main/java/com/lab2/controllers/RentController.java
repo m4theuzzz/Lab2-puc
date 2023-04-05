@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/rents")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RentController {
 
     @Autowired

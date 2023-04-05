@@ -12,7 +12,7 @@ const SignUp = () => {
   const { values, handleChange } = useForm(defaultValues, {});
 
   const handleSignUp = async () => {
-    const userCreated = await axios.post('http://localhost:8080/users', JSON.stringify(defaultValues));
+    const userCreated = await axios.post('http://localhost:8080/users', values);
   };
 
   return (

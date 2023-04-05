@@ -13,9 +13,8 @@ import Modal from "../components/Modal";
 import NavBar from "../components/NavBar";
 import useModal from "../hooks/useModal";
 
-const carsmock = [1, 2, 3, 45, 6];
-
 export interface Vehicle {
+  id: number;
   brand: string;
   model: string;
   year: number;
@@ -23,10 +22,20 @@ export interface Vehicle {
 
 const Cars = () => {
   const [cars, setCars] = useState<Vehicle[]>([]);
+  const [selectedCar, setSelectedCar] = useState<Vehicle>();
 
   const carModal = useModal();
 
-  const handleRentCar = async () => { };
+  const handleRentCar = async () => {
+    const date = new Date();
+    date.setFullYear(date.getFullYear() + 1)
+    const rent = (await axios.post('http://localhost:8080/rents', {
+      requester: 1,
+      vehicleId: selectedCar?.id,
+      expireAt: date,
+      status: "pending"
+    }))
+  };
   const getCars = async () => {
     const vehicles = (await axios.get<Vehicle[]>('http://localhost:8080/vehicles')).data;
 
@@ -50,12 +59,13 @@ const Cars = () => {
           <Button onClick={carModal.close}>Cancelar</Button>
           <Button onClick={handleRentCar}>Confirmar</Button>
         </Modal>
-        {carsmock.map((car: any) => (
+        {cars.map((car: any) => (
           <Grid item>
             <BasicCard
+              key={car.id}
               title={car.model}
               subtitle={`${car.year} | ${car.brand}`}
-              action={() => carModal.open(car)}
+              action={() => { carModal.open(car); setSelectedCar(car) }}
               actionText={"Alugar"}
             />
           </Grid>
