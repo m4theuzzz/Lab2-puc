@@ -18,7 +18,9 @@ const carsmock = [1, 2, 3, 45, 6];
 const Requests = () => {
   const [requests, setRequests] = useState([]);
 
-  const requestModal = useModal();
+  const rentModal = useModal();
+
+  const handleDeleteRent = async () => {};
 
   useEffect(() => {
     const getRequests = async () => {
@@ -34,19 +36,24 @@ const Requests = () => {
     <Grid>
       <NavBar pageName={"Pedidos de Aluguel"} />
       <Grid container spacing={5} sx={{ p: 5 }}>
-        {/* <Modal
-          open={requestModal.isOpen}
-          close={requestModal.close}
+        <Modal
+          open={rentModal.isOpen}
+          close={rentModal.close}
           title={"Fazer pedido de aluguel"}
         >
-          Tem certeza que deseja realizar um pedido para{" "}
-          {requestModal.elementClicked.id} ?
-          <Button onClick={requestModal.close}>Cancelar</Button>
-          <Button onClick={handleRentCar}>Confirmar</Button>
-        </Modal> */}
-        {carsmock.map((car) => (
+          Tem certeza que deseja apagar
+          {rentModal.elementClicked.id} ?
+          <Button onClick={rentModal.close}>Cancelar</Button>
+          <Button onClick={handleDeleteRent}>Confirmar</Button>
+        </Modal>
+        {carsmock.map((rent: any) => (
           <Grid item>
-            <BasicCard />
+            <BasicCard
+              title={rent.id}
+              subtitle={rent.status}
+              action={() => rentModal.open(rent)}
+              actionText={"Excluir"}
+            />
           </Grid>
         ))}
       </Grid>

@@ -40,14 +40,18 @@ const Cars = () => {
           close={carModal.close}
           title={"Fazer pedido de aluguel"}
         >
-          Tem certeza que deseja realizar um pedido para{" "}
-          {/* {carModal.elementClicked.id} ? */}
+          Tem certeza que deseja realizar um pedido para este carro?
           <Button onClick={carModal.close}>Cancelar</Button>
           <Button onClick={handleRentCar}>Confirmar</Button>
         </Modal>
         {carsmock.map((car: any) => (
           <Grid item>
-            <BasicCard action={() => carModal.open(car)} />
+            <BasicCard
+              title={car.model}
+              subtitle={`${car.year} | ${car.brand}`}
+              action={() => carModal.open(car)}
+              actionText={"Alugar"}
+            />
           </Grid>
         ))}
       </Grid>
